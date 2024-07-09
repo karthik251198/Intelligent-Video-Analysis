@@ -134,6 +134,7 @@ def cumulative_object_counting_y_axis(input_video, detection_graph, category_ind
         height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
         width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
         fps = int(cap.get(cv2.CAP_PROP_FPS))
+        size = int(cap.get(cv2.CAP_PROP_SIZE))
 
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
         output_movie = cv2.VideoWriter('the_output.avi', fourcc, fps, (width, height))
@@ -397,9 +398,6 @@ def targeted_object_counting(input_video, detection_graph, category_index, is_co
                 output_movie.write(input_frame)
                 print ("writing frame")
 
-                if cv2.waitKey(1) & 0xFF == ord('q'):
-                        break
-
             cap.release()
             cv2.destroyAllWindows()
 
@@ -422,7 +420,8 @@ def single_image_object_counting(input_video, detection_graph, category_index, i
             # Score is shown on the result image, together with the class label.
             detection_scores = detection_graph.get_tensor_by_name('detection_scores:0')
             detection_classes = detection_graph.get_tensor_by_name('detection_classes:0')
-            num_detections = detection_graph.get_tensor_by_name('num_detections:0')            
+            num_detections = detection_graph.get_tensor_by_name('num_detections:0')   
+            string_detections = detection_graph.get_tensor_by_name('string_detections:0')            
 
        
 

@@ -15,7 +15,7 @@ detection_graph, category_index = backbone.set_model('faster_rcnn_inception_resn
 #object_counting_api.object_counting(input_video, detection_graph, category_index, 1) # for counting all the objects, enabled color prediction
 
 
-targeted_objects = "person,knife" # (for counting targeted objects) change it with your targeted objects
+targeted_objects = "person,knife,guns" # (for counting targeted objects) change it with your targeted objects
 is_color_recognition_enabled = 0
 
 object_counting_api.targeted_object_counting(input_video, detection_graph, category_index, is_color_recognition_enabled, targeted_objects) # targeted objects counting
